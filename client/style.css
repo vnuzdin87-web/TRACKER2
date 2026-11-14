@@ -1,0 +1,246 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+:root {
+  font-family: "Inter Variable", system-ui, sans-serif;
+  color: #0f172a;
+  background: #f8fafc;
+}
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+body {
+  margin: 0;
+}
+h1 {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+h2 {
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 14rem minmax(0, 1fr);
+  min-height: 100vh;
+}
+.sidebar {
+  background: #fff;
+  border-right: 1px solid #dbe3ef;
+  padding: 1.25rem;
+}
+.brand {
+  font-size: 1.25rem;
+  font-weight: 750;
+  display: block;
+  margin-bottom: 1rem;
+}
+nav {
+  display: grid;
+  gap: 0.4rem;
+}
+nav a {
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.6rem;
+}
+nav a[aria-current] {
+  color: #1d4ed8;
+  background: #eff6ff;
+  font-weight: 650;
+}
+.content {
+  width: 100%;
+  max-width: 86rem;
+  padding: clamp(0.85rem, 3vw, 2rem);
+}
+.card {
+  background: #fff;
+  border: 1px solid #dbe3ef;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  min-width: 0;
+}
+.form {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 44rem;
+}
+label {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+  font-weight: 550;
+}
+input,
+select,
+textarea,
+button {
+  border: 1px solid #94a3b8;
+  border-radius: 0.5rem;
+  padding: 0.48rem 0.65rem;
+  min-width: 0;
+  background: #fff;
+  color: inherit;
+}
+input[type="color"] {
+  min-width: 3rem;
+  padding: 0.15rem;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.primary {
+  color: white;
+  background: #2563eb;
+  border-color: #2563eb;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+.check {
+  display: flex;
+  align-items: center;
+}
+.rows li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e2e8f0;
+  overflow-wrap: anywhere;
+}
+.rows li:last-child {
+  border: 0;
+}
+[role="alert"] {
+  color: #b91c1c;
+}
+@media (max-width: 700px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sidebar {
+    padding: 0.8rem;
+    border-right: 0;
+    border-bottom: 1px solid #dbe3ef;
+  }
+  .brand {
+    margin-bottom: 0.4rem;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+  nav a {
+    padding: 0.4rem 0.55rem;
+  }
+}
+.heading {
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.heading h1 {
+  margin: 0;
+}
+.filters {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  align-items: end;
+}
+.button {
+  display: inline-block;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.55rem;
+}
+.period {
+  max-width: 14rem;
+  margin-bottom: 1rem;
+}
+.metrics,
+.report-grid {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+}
+.metrics {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+}
+.report-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+}
+.metric {
+  display: grid;
+  gap: 0.25rem;
+}
+.metric strong {
+  font-size: clamp(1.15rem, 2vw, 1.7rem);
+  overflow-wrap: anywhere;
+}
+.chart {
+  min-width: 0;
+  height: 16rem;
+  margin-top: 0.8rem;
+}
+.limit {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0.75rem 0;
+}
+.limit progress {
+  width: 100%;
+  accent-color: #2563eb;
+}
+.limit.warning progress {
+  accent-color: #d97706;
+}
+.limit.reached progress {
+  accent-color: #dc2626;
+}
+.card a:not(.button) {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  color: #e2e8f0;
+  background: #0f172a;
+}
+[data-theme="dark"] :is(.card, .sidebar, input, select, textarea, button) {
+  background: #1e293b;
+  border-color: #475569;
+}
+[data-theme="dark"] .primary {
+  background: #1d4ed8;
+  border-color: #3b82f6;
+}
+[data-theme="dark"] .rows li {
+  border-color: #475569;
+}
+[data-theme="dark"] .card a:not(.button) {
+  color: #93c5fd;
+}
+[data-theme="dark"] nav a[aria-current] {
+  color: #bfdbfe;
+  background: #172554;
+}
+[data-theme="dark"] [role="alert"] {
+  color: #fca5a5;
+}
+[data-theme="dark"] .recharts-default-tooltip {
+  color: #0f172a;
+}

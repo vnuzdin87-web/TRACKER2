@@ -1,0 +1,21 @@
+services:
+  budget:
+    build: .
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - budget-data:/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/health').then(r => { if (!r.ok) process.exitCode = 1 })",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  budget-data:
